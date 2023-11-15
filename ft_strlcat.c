@@ -6,7 +6,7 @@
 /*   By: fberthou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:07:41 by fberthou          #+#    #+#             */
-/*   Updated: 2023/11/14 08:04:56 by fberthou         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:37:49 by fberthou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		i++;
 		x++;
 	}
-	if (size > 0)
-		dst[i] = '\0';
+	dst[i] = '\0';
 	if (size < dst_len)
 		return (src_len + size);
 	else
@@ -43,10 +42,10 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	char		ft_strldest[20] = "HELLO";
 	char		strlcatdest[20] = "HELLO";
-	const char	src[] = "world";
+	const char	src[] = " world";
 
-	printf("M = %zu\n", ft_strlcat(ft_strldest, src, 20));
-	printf("T = %zu\n", strlcat(strlcatdest, src, 20));
+	printf("M = %zu\n", ft_strlcat(ft_strldest, src, sizeof(ft_strldest)));
+	printf("T = %zu\n", strlcat(strlcatdest, src, sizeof(strlcatdest)));
 	printf("M = %s\n", ft_strldest);
 	printf("T = %s\n", strlcatdest);
 	

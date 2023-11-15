@@ -1,39 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fberthou <fberthou@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 13:13:18 by fberthou          #+#    #+#             */
-/*   Updated: 2023/11/15 09:36:21 by fberthou         ###   ########.fr       */
+/*   Created: 2023/11/15 09:03:26 by fberthou          #+#    #+#             */
+/*   Updated: 2023/11/15 09:42:06 by fberthou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strdup(const char *s)
 {
-	void	*dst;
+	int		i;
+	char	*dst;
 
-	dst = malloc(nmemb * size);
+	dst = malloc((ft_strlen(s) + 1) * sizeof(char));
 	if (!dst)
 		return (0);
-	ft_memset(dst, 0, (nmemb * size));
+	i = 0;
+	while (s[i])
+	{
+		dst[i] = s[i];
+		i++;
+	}
+	dst[i] = 0;
 	return (dst);
 }
 
-/*int	main(void)
+/*int	main(int arc, char **arv)
 {
-	char	*cptr;
-	int	*iptr;
-	size_t	size = 0;
-
-	cptr = (char *)ft_calloc(0, 0);
-	iptr = (int *)ft_calloc(size, sizeof(int));
-	printf("%p\n", cptr);
-	printf("%p\n", iptr);
-	free(cptr);
-	free(iptr);
+	char	*s = arv[1];
+	char	*dst = ft_strdup(s);
+	char	*dst2 = strdup(s);
+	printf("DST = %s\n", dst);
+	printf("DST2 = %s\n", dst2);
+	free(dst);
+	free(dst2);
 	return (0);
 }*/
