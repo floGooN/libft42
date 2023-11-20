@@ -6,7 +6,7 @@
 /*   By: fberthou <fberthou@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 08:17:55 by fberthou          #+#    #+#             */
-/*   Updated: 2023/11/20 14:01:39 by fberthou         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:43:59 by fberthou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	**ft_split(char const *s, char c)
 	ft_bzero(dst, tab_size);
 	x = 0;
 	i = 0;
-	while (s[i] && x < tab_size)
+	while (s[i] && x < tab_size && s[0] != '\0')
 	{
 		if (s[i] != c)
 		{
@@ -85,7 +85,7 @@ char	**ft_split(char const *s, char c)
 	return (dst);
 }
 
-int	main(int arc, char **arv)
+/*int	main(int arc, char **arv)
 {
 	int	x;
 	size_t	x_size;
@@ -107,4 +107,4 @@ int	main(int arc, char **arv)
 	}
 	free(dst);
 	return (0);
-}
+}*/
