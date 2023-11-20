@@ -6,43 +6,56 @@
 /*   By: fberthou <fberthou@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:44:51 by fberthou          #+#    #+#             */
-/*   Updated: 2023/11/15 15:16:34 by fberthou         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:59:34 by fberthou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static size_t	lenstr(char const *s, unsigned int start)
+{
+	size_t	count;
+
+	count = 0;
+	if (start <= ft_strlen(s))
+	{
+		while (s[start])
+		{
+			count++;
+			start++;
+		}
+	}
+	return (count);
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	int		i;
-	int		x;
+	size_t	total_len;
 	char	*dst;
 
-	if (start >= ft_strlen(s))
-		len = 0;
-	else if (len > ft_strlen(s))
-		len = ft_strlen(s);
+	total_len = lenstr(s, start);
+	if (len > total_len)
+		len = total_len;
 	dst = malloc((len + 1) * sizeof(char));
-	x = 0;
-	i = start;
 	if (!dst)
 		return (NULL);
-	while (x < (int)len && s[i])
+	ft_bzero(dst, len + 1);
+	i = 0;
+	while (i < (int)len && s[start])
 	{
-		dst[x] = s[i];
-		x++;
+		dst[i] = s[start];
 		i++;
+		start++;
 	}
-	dst[x] = 0;
 	return (dst);
 }
 
-/*int	main(void)
+/*int	main(int arc, char **arv)
 {
 	char	*dst;
-	char	*src = "";
 	
-	dst = ft_substr("hola", 0, 21474836475);
+	dst = ft_substr(arv[1], atoi(arv[2]), atoi(arv[3]));
 	printf("%s\n", dst);
 	return (0);
 }*/
