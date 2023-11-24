@@ -6,7 +6,7 @@
 /*   By: fberthou <fberthou@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:59:17 by fberthou          #+#    #+#             */
-/*   Updated: 2023/11/14 09:39:40 by fberthou         ###   ########.fr       */
+/*   Updated: 2023/11/24 10:34:11 by fberthou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
+	size_t	s1len;
+	size_t	s2len;
 
+	s1len = ft_strlen(s1);
+	s2len = ft_strlen(s2);
 	if (n == 0)
 		return (0);
-	else if (ft_strlen(s1) == 0)
-		return (-s2[0]);
-	else if (ft_strlen(s2) == 0)
-		return (s1[0]);
 	i = 0;
 	while (i < n)
 	{
 		if (s1[i] != s2[i])
 			return (s1[i] - s2[i]);
 		else if (s1[i + 1] == 0 && s2[i + 1] == 0)
-			return (0);
+			break;
 		i++;
 	}
 	return (0);

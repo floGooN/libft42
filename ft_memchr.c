@@ -6,7 +6,7 @@
 /*   By: fberthou <fberthou@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:18:16 by fberthou          #+#    #+#             */
-/*   Updated: 2023/11/14 11:19:34 by fberthou         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:54:47 by fberthou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,24 @@
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	*s1;
+	size_t				i;
 
 	s1 = (const unsigned char *)s;
-	while (n > 0)
+	i = 0;
+	while (i < n && s1[i])
 	{
-		if (*s1 == c)
-			return ((void *)s1);
-		n--;
-		s1++;
+		if (s1[i] == (unsigned int)c)
+			return ((void *)&(s1[i]));
+		i++;
 	}
 	return (0);
 }
 
-/*int	main(void)
+int	main(void)
 {
-	char	src[] = {-49, 49, 1, -1, 0, -2, 2};
-	size_t	size = 7;
+	char	*src = "/|\x12\xff\x09\x42\2002\42|\\";
+	size_t	size = 10;
 
-	printf("%s\n", ((char *)ft_memchr(src, -1, 7)));
+	printf("%s\n", ((char *)memchr(src, '\200', 7)));
 	return (0);
-}*/
+}
