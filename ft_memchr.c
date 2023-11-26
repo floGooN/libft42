@@ -19,20 +19,21 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	s1 = (const unsigned char *)s;
 	i = 0;
-	while (i < n && s1[i])
+	while (i < n)
 	{
-		if (s1[i] == (unsigned int)c)
-			return ((void *)&(s1[i]));
+		if (s1[i] == (unsigned char)c)
+			return ((void *)&s1[i]);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
 
-int	main(void)
-{
-	char	*src = "/|\x12\xff\x09\x42\2002\42|\\";
-	size_t	size = 10;
+// int	main(void)
+// {
+// 	char	*src = "/|\x12\xff\x09\x42\2002\42|\\";
+// 	size_t	size = 10;
 
-	printf("%s\n", ((char *)memchr(src, '\200', 7)));
-	return (0);
-}
+// 	printf("%s\n", ((char *)memchr(src, '\200', 7)));
+// 	printf("%s\n", ((char *)ft_memchr(src, '\200', 7)));
+// 	return (0);
+// }

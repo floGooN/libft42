@@ -17,20 +17,26 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	size_t	i;
 
 	i = 0;
-	while (i < n)
-	{
-		((char *)dest)[i] = ((char *)src)[i];
-		i++;
-	}
-	return (dest);
+  if (!src || !dest)
+    return (dest);
+  if (dest)
+  {
+    while (i < n)
+    {
+      ((char *)dest)[i] = ((const char *)src)[i];
+      i++;
+    }
+    return (dest);
+  }
+  return (NULL);
 }
 
-/*int	main(void)
-{
-	char	cpy[] = "000000000000000000";
-	char	array[] = "make a copy of that";
-	printf("%s\n", cpy);
-	ft_memcpy(cpy, array, 19 * sizeof(*array));
-	printf("%s", cpy);
-	return (0);
-}*/
+// int	main(int arc, char **arv)
+// {
+//   char  dst[10];
+//   printf("sizeof dst in main = %zu\n", sizeof(dst));
+//   (char *)(ft_memcpy(dst, "coucou", 10));
+// 	printf("%s", dst);
+// 	// printf("la  : %p", (memcpy(((void *)0), ((void *)0), 3)));
+// 	return (0);
+// }
